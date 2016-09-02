@@ -5,7 +5,7 @@ module EasyAuth
 
     def decode_basic_sign(sign)
       params_array = sign.split(':')
-      return Error.oh_error(AUTHENTICATE_PARAMETERS_FAILD) unless params_array.length == 3
+      return Error.oh_error(EasyAuth::Error::AUTHENTICATE_PARAMETERS_FAILD) unless params_array.length == 3
       @app_key, @encode_sign, @encode_params = params_array
     end
 
@@ -25,11 +25,11 @@ module EasyAuth
       decode_basic_sign(sign)
 
       unless verify_deadline?
-        return Error.oh_error(AUTHENTICATE_PARAMETERS_EXPIRED)
+        return Error.oh_error(EasyAuth::Error::AUTHENTICATE_PARAMETERS_EXPIRED)
       end
 
       unless Sign.generate_init_sign(@encode_params) == decoded_sign
-        Error.oh_error(INVALID_CREDENTIAL)
+        Error.oh_error(EasyAuth::Error::INVALID_CREDENTIAL)
       end
     end
   end

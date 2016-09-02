@@ -21,7 +21,9 @@ module EasyAuth
     # end
 
     def self.oh_error(*args)
-      new.add_error(*args)
+      error = self.new
+      error.add_error(*args)
+      error
     end
 
     def res_errors
