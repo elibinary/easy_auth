@@ -1,4 +1,3 @@
-require 'openssl'
 module EasyAuth
   class Sign
     def self.generate_init_sign(encode_params)

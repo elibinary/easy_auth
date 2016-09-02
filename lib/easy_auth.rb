@@ -10,6 +10,7 @@ require 'easy_auth/sign'
 require 'easy_auth/rails/helpers'
 
 require 'multi_json'
+require 'openssl'
 
 module EasyAuth
   
